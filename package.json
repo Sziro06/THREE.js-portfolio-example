@@ -1,0 +1,32 @@
+{
+  "name": "three.js-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "create-vite": "^4.4.1",
+    "esbuild": "^0.18.20",
+    "fsevents": "^2.3.3",
+    "kolorist": "^1.8.0",
+    "nanoid": "^3.3.6",
+    "picocolors": "^1.0.0",
+    "postcss": "^8.4.29",
+    "rollup": "^3.29.1",
+    "source-map-js": "^1.0.2",
+    "three": "^0.156.1",
+    "vite": "^4.4.9"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
