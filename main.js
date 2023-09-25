@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import './src/styles.css';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-let scene, camera, renderer, geometry, material, torus, pointLight, ambientLight, lightHelper, gridHelper, controls;
+let scene, camera, renderer, geometry, material, torus, pointLight, ambientLight, lightHelper, gridHelper, controls, spaceTexture;
 
 
 
@@ -37,6 +37,25 @@ gridHelper = new THREE.GridHelper( 200, 50);
 scene.add( lightHelper, gridHelper )
 
 controls = new OrbitControls( camera, renderer.domElement );
+
+function addStar() {
+    let geometry, material, star;
+    geometry = new THREE.SphereGeometry( 0.25, 24, 24 );
+    material = new THREE.MeshStandardMaterial( { color: 0xffffff } )
+    star = new THREE.Mesh( geometry, material );
+
+    const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ) );
+
+    star.position.set( x, y, z );
+    scene.add( star );
+}
+
+Array( 200 ).fill().forEach(addStar)
+
+
+spaceTexture = new THREE.TextureLoader()
+spaceTexture.load("./images/space.jpg");
+scene.background = spaceTexture;
 
 function animate() {
     renderer.render(scene, camera);
