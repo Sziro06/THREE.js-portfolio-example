@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import './src/styles.css';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-let scene, camera, renderer, geometry, material, torus, pointLight, ambientLight, lightHelper, gridHelper, controls, spaceTexture;
+let scene, camera, renderer, geometry, material, torus, pointLight, ambientLight, lightHelper, gridHelper, controls, spaceTexture, moonTexture, moon;
 
 
 
@@ -53,9 +53,17 @@ function addStar() {
 Array( 200 ).fill().forEach(addStar)
 
 
-spaceTexture = new THREE.TextureLoader()
-spaceTexture.load("./images/space.jpg");
+spaceTexture = new THREE.TextureLoader().load("https://media.istockphoto.com/id/178149253/photo/deep-space-background.jpg?b=1&s=612x612&w=0&k=20&c=UWheinVHEkSamqeXD1cOv80kgdWHMeKXjU7EJy9-j5U=");
 scene.background = spaceTexture;
+
+moonTexture = new THREE.TextureLoader().load('https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_3_8bit.jpg');
+moon = new THREE.Mesh(
+    new THREE.SphereGeometry( 3, 32, 32 ),
+    new THREE.MeshDistanceMaterial( {
+        map: moonTexture,
+    } )
+)
+
 
 function animate() {
     renderer.render(scene, camera);
